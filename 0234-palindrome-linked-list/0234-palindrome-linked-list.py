@@ -7,8 +7,9 @@ class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
         import collections
         
-        node = head
         d = collections.deque()
+        
+        node = head
         
         while node:
             d.append(node.val)
@@ -16,7 +17,6 @@ class Solution:
         
         while len(d) > 1:
             if d.popleft() != d.pop():
-                print(d)
                 return False
         
         return True
