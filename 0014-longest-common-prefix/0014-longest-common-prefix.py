@@ -4,7 +4,6 @@ class Solution:
             return ""
         
         shortest = min(strs, key=len)
-        strs.remove(shortest)
         
         for i, s in enumerate(shortest):
             for str in strs:
