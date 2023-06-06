@@ -5,10 +5,10 @@ class Solution:
         
         for c in s:
             if c in brackets:
-                if not stack or brackets[c] != stack[-1]:
-                    return False
-                else:
+                if stack and brackets[c] == stack[-1]:
                     stack.pop()
+                else:
+                    return False
             else:
                 stack.append(c)
         
