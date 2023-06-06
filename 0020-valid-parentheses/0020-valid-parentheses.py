@@ -1,14 +1,15 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        brackets = {"(":")", "{":"}","[":"]"}
+        brackets = {")":"(", "}":"{","]":"["}
         stack = []
         
         for c in s:
-            if c in ["(", "{", "["]:
-                stack.append(c)
-            elif not stack or c != brackets[stack[-1]]:
-                return False
+            if c in brackets:
+                if not stack or brackets[c] != stack[-1]:
+                    return False
+                else:
+                    stack.pop()
             else:
-                stack.pop()
+                stack.append(c)
         
         return True if not stack else False
