@@ -1,35 +1,14 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        def is_open(c: str):
-            if c in ["(", "{", "["]:
-                return True
-            return False
-        
-        def is_pair(x:str, y: str):
-            if x == "(":
-                if y == ")":
-                    return True
-            elif x == "{":
-                if y == "}":
-                    return True
-            elif x == "[":
-                if y == "]":
-                    return True
-            return False
-            
+        brackets = {"(":")", "{":"}","[":"]"}
         stack = []
         
         for c in s:
-            if is_open(c):
+            if c in list(brackets.keys()):
                 stack.append(c)
-            elif not stack:
-                return False
-            elif not is_pair(stack[-1], c):
+            elif not stack or c != brackets[stack[-1]]:
                 return False
             else:
                 stack.pop()
         
-        if not stack:
-            return True
-        else:
-            return False
+        return True if not stack else False
