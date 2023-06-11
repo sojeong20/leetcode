@@ -13,7 +13,6 @@ class Solution:
             if not l2:
                 l2 = ListNode(0)
             now_number = temp.val + l1.val + l2.val
-            print("now_number:", now_number)
             if now_number >= 10:
                 temp.val = (now_number - 10)
                 temp.next = ListNode(1)
