@@ -15,8 +15,7 @@ class Solution:
             head.next, temp1.val = head.next.next, head.next.val
             temp1.next = head.next.next
             head = head.next
-            if head.next:
-                temp1 = temp1.next
+            temp1 = temp1.next
         
         head.next = temp2
         
