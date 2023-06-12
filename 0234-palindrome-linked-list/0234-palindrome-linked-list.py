@@ -5,10 +5,7 @@
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        import collections
-        
-        d = collections.deque()
-        
+        d = []
         node = head
         
         while node:
@@ -16,7 +13,7 @@ class Solution:
             node = node.next
         
         while len(d) > 1:
-            if d.popleft() != d.pop():
+            if d.pop(0) != d.pop():
                 return False
         
         return True
