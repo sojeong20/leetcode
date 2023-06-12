@@ -14,10 +14,10 @@ class Solution:
         
         my_list[left-1: right] = reversed(my_list[left - 1: right])
         
-        for i in range(len(my_list) - 1):
+        for i, val in enumerate(my_list):
             temp.val = my_list[i]
-            temp.next = ListNode()
-            temp = temp.next
-        temp.val = my_list[-1]
+            if i != (len(my_list) - 1):
+                temp.next = ListNode()
+                temp = temp.next
             
         return result
