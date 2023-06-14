@@ -3,7 +3,7 @@ import collections
 class MyStack:
 
     def __init__(self):
-        self.stack = collections.deque([])
+        self.stack = collections.deque()
 
     def push(self, x: int) -> None:
         self.stack.append(x)
@@ -15,7 +15,7 @@ class MyStack:
         return self.stack[-1]
 
     def empty(self) -> bool:
-        return False if self.stack else True
+        return len(self.stack) == 0
 
 
 # Your MyStack object will be instantiated and called as such:
