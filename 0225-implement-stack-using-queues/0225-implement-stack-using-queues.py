@@ -1,7 +1,9 @@
+import collections
+
 class MyStack:
 
     def __init__(self):
-        self.stack = []
+        self.stack = collections.deque([])
 
     def push(self, x: int) -> None:
         self.stack.append(x)
