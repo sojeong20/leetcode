@@ -1,13 +1,12 @@
 class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
-        if n <= 0: 
+        if n == 0:
             return False
         
-        power_of_two = [1]
+        if n == 1:
+            return True
         
-        x = 1
-        for i in range(1, 32):
-            x *= 2
-            power_of_two.append(x)
-            
-        return True if n in power_of_two else False
+        if n % 2 != 0:
+            return False
+        
+        return self.isPowerOfTwo(n/2)
