@@ -3,21 +3,22 @@ class Solution:
         if len(s) <= 1:
             return len(s)
         
+        import collections
+        seen = collections.defaultdict()
         max_length = 1
-        substring = [s[0]]
         left = 0
         right = left + 1
+        seen[s[left]] = left
         
         while left < len(s) - 1 and right < len(s):
-            if s[right] not in substring:
-                substring.append(s[right])
-                if len(substring) > max_length:
-                    max_length = len(substring)
+            if s[right] not in seen:
+                seen[s[right]] = right
+                max_length = max(max_length, right - left + 1)
                 right += 1
             else:
                 left += 1
                 right = left + 1
-                substring = [s[left]]
+                seen = {s[left]: left}
             
         return max_length
                 
