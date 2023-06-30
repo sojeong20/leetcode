@@ -15,8 +15,6 @@ class Solution:
                     max_length = len(substring)
                 right += 1
             else:
-                if len(substring) > max_length:
-                    max_length = len(substring)
                 left += 1
                 right = left + 1
                 substring = [s[left]]
