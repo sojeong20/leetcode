@@ -1,27 +1,25 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if len(s) <= 1:
-            return len(s)
-        
-        import collections
-        seen = collections.defaultdict()
-        max_length = 1
-        left = 0
-        right = left + 1
-        seen[s[left]] = left
-        
-        while left < len(s) - 1 and right < len(s):
-            if s[right] not in seen:
-                seen[s[right]] = right
-                max_length = max(max_length, right - left + 1)
-                right += 1
-            else:
-                left += 1
-                right = left + 1
-                seen = {s[left]: left}
-            
+        char_map = {}
+        max_length = 0
+        start = 0
+
+        for end in range(len(s)):
+            # If the current character is already in the dictionary and its last index is after the start of the window
+            if s[end] in char_map and start <= char_map[s[end]]:
+                # Move the start of the window to the next index after the last occurrence of the current character
+                start = char_map[s[end]] + 1
+
+            # Update the last index of the current character
+            char_map[s[end]] = end
+
+            # Calculate the length of the current substring without repeating characters
+            current_length = end - start + 1
+
+            # Update the maximum length if necessary
+            max_length = max(max_length, current_length)
+
         return max_length
-                
                 
             
         
