@@ -7,7 +7,6 @@
 class Solution:
     result: int = 0
     def longestUnivaluePath(self, root: Optional[TreeNode]) -> int:
-        print(root)
         def dfs(node: TreeNode):
             if node is None:
                 return 0
