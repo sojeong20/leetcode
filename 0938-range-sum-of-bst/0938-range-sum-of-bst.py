@@ -5,19 +5,18 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    result: int = 0
-        
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
-        if not root:
-            return self.result
-        
-        if low <= root.val <= high:
-            self.result += root.val
+        def dfs(node: TreeNode):
+            if not node:
+                return 0
             
-        self.rangeSumBST(root.left, low, high)
-        self.rangeSumBST(root.right, low, high)
+            if node.val < low:
+                return dfs(node.right)
+            elif node.val > high:
+                return dfs(node.left)
+            return node.val + dfs(node.left) + dfs(node.right)
         
-        return self.result
+        return dfs(root)
         
         
             
