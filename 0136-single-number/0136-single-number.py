@@ -1,11 +1,7 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        result = []
-        
+        result = 0
         for x in nums:
-            if x in result:
-                result.remove(x)
-            else:
-                result.append(x)
-        
-        return result[0]
+            result ^= x
+            
+        return result
