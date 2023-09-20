@@ -11,5 +11,4 @@ class Solution:
                 result += word2[right]
                 right += 1
                 
-                
         return result
