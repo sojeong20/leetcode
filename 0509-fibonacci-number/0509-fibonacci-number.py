@@ -1,8 +1,14 @@
+import collections
+
 class Solution:
+    dp = collections.defaultdict(int)
+    
     def fib(self, n: int) -> int:
-        x, y = 0, 1
+        if n <= 1:
+            return n
         
-        for i in range(0, n):
-            x, y = y, x + y
-            
-        return x
+        if self.dp[n]:
+            return self.dp[n]
+        self.dp[n] = self.fib(n-1) + self.fib(n-2)
+
+        return self.dp[n]
