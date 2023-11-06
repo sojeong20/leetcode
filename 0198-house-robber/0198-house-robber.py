@@ -7,11 +7,11 @@ class Solution:
         if len(nums) <= 2:
             return max(nums)
         
-        max_money = [nums[0], max(nums[0], nums[1])]
+        dp = collections.OrderedDict()
+        dp[0], dp[1] = nums[0], max(nums[0], nums[1])
 
         for i in range(2, len(nums)):
-            current_max = max(max_money[i-2]+nums[i], max_money[i-1])
-            max_money.append(current_max)
+            dp[i] = max(dp[i-2]+nums[i], dp[i-1])
             
-        return max_money[-1]
+        return dp.popitem()[1]
         
