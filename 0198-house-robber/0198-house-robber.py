@@ -13,5 +13,5 @@ class Solution:
         for i in range(2, len(nums)):
             max_money.append(max(max_money[i-2] + nums[i], max_money[i-1]))
             
-        return max(max_money)
+        return max_money[-1]
         
