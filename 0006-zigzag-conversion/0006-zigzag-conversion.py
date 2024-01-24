@@ -3,25 +3,21 @@ class Solution:
         if numRows == 1:
             return s
         
-        result = ""
-        big_step = numRows*2-2
-
-        for i in range(numRows):
-            p = i
-            if i == 0 or i == numRows - 1:
-                while p < len(s):
-                    result += s[p]
-                    p += big_step
-            else:
-                small_step = (numRows-i)*2-2
-                j = 0
-                while p < len(s):
-                    now_step = small_step if j % 2 == 0 else big_step - small_step
-                    result += s[p]
-                    p += now_step
-                    j += 1
+        rows = [""] * len(s)
+        cur_row, step = 0, 1
+        
+        for ch in s:
+            rows[cur_row] += ch
+            
+            if cur_row == numRows - 1:
+                step = -1
+            elif cur_row == 0:
+                step = 1
+            
+            cur_row += step
+            
    
-        return result
+        return "".join(rows)
                 
             
 
